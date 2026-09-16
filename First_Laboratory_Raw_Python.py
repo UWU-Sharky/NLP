@@ -16,7 +16,7 @@ sentences = sent_tokenize(content)
 for sentence in sentences:
     words = word_tokenize(sentence)
 
-    for previous_word, current_word in zip(words[::2], words[1::2]):
+    for previous_word, current_word in zip(words, words[1:]):
 
         previous_analysis = morph.parse(previous_word)
         current_analysis = morph.parse(current_word)
