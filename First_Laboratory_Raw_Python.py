@@ -41,4 +41,15 @@ for sentence in sentences:
       if flag:
           break
 
-print(sequence_of_pairs)
+print(f"Количество пар слов до фильтрации по score {len(sequence_of_pairs)}")
+
+min_score = 0.5
+filtired_sequence = []
+for pair in sequence_of_pairs:
+    if pair[0].score >= min_score or pair[1].score >= min_score:
+        normalized_pair = (pair[0].normal_form, pair[1].normal_form)
+        filtired_sequence.append(normalized_pair)
+
+print(f"Количество пар слов после фильтрации по score {len(filtired_sequence)}")
+
+print(*filtired_sequence, sep='\n')
