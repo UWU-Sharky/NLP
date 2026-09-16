@@ -43,10 +43,10 @@ for sentence in sentences:
 
 print(f"Количество пар слов до фильтрации по score {len(sequence_of_pairs)}")
 
-min_score = 0.5
+min_score = 0.1
 filtired_sequence = []
 for pair in sequence_of_pairs:
-    if pair[0].score >= min_score or pair[1].score >= min_score:
+    if pair[0].score >= min_score and pair[1].score >= min_score:
         normalized_pair = (pair[0].normal_form, pair[1].normal_form)
         filtired_sequence.append(normalized_pair)
 
