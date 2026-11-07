@@ -1,9 +1,11 @@
 from transformers import BertTokenizer, BertForMaskedLM
 from torch.nn import functional as F
+
 import torch
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-multilingual-uncased")
 model = BertForMaskedLM.from_pretrained("bert-base-multilingual-uncased")
+
 model.eval()
 
 word1 = "происходит"
