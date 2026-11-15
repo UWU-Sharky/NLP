@@ -11,7 +11,7 @@ model.eval()
 word1 = "происходит"
 word2 = "отличается"
 
-text = f"В этой лаборатории [MASK] что-то странное, и каждый новый эксперимент сильно [MASK] от предыдущего."
+text = "Этот эксперимент " + tokenizer.mask_token + " от естественного процесса, который наблюдается в природе."
 
 inputs = tokenizer(text, return_tensors='pt')
 input_ids = inputs['input_ids']
@@ -44,8 +44,6 @@ for i, idx in enumerate(mask_indices):
 for mask_index, res in enumerate(answer):
     res_dict = dict(res) 
     
-    if word1 in res_dict and res_dict[word1] > 10:
-        print(f"слово {word1} входит в маску #{mask_index + 1} с вероятностью {res_dict[word1]:.2f}%")
-        
-    if word2 in res_dict and res_dict[word2] > 10:
-        print(f"слово {word2} входит в маску #{mask_index + 1} с вероятностью {res_dict[word2]:.2f}%")
+    if word1 in res_dict and word2 in res_dict:
+        print(f"слово \"{word1}\" входит в маску с вероятностью {res_dict[word1]:.2f}%")
+        print(f"слово \"{word2}\" входит в маску с вероятностью {res_dict[word2]:.2f}%")
